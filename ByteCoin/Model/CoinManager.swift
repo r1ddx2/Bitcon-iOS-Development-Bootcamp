@@ -8,58 +8,123 @@
 
 import Foundation
 
-protocol CoinManagerDelegate {
-    func didUpdatePrice(price: String, currency: String)
-    func didFailWithError(error: Error)
-}
-
 struct CoinManager {
-    
-    var delegate: CoinManagerDelegate?
-    
-    let baseURL = "https://rest.coinapi.io/v1/exchangerate/BTC"
-    let apiKey = "YOUR_API_KEY_HERE"
+    var delegate: CoinManagerDelegate? // Delegate handler
+ 
+    let baseURL = "https://api.coincap.io/v2/assets?sort=marketcap&limit="
+    let apiKey = "027ba36b-82ac-468c-982f-a3f4a74e1fb4"
+    let rankTo = 24
 
-    let currencyArray = ["AUD", "BRL","CAD","CNY","EUR","GBP","HKD","IDR","ILS","INR","JPY","MXN","NOK","NZD","PLN","RON","RUB","SEK","SGD","USD","ZAR"]
     
-    func getCoinPrice(for currency: String) {
+    //    // Networking
+    //    // Fetch Coin Ranking List
+    func getCoinList() {
+        // Complete URL
+        let urlString = "\(baseURL)\(rankTo)&apikey=\(apiKey)"
         
-        let urlString = "\(baseURL)/\(currency)?apikey=\(apiKey)"
-        print(urlString)
-        
-        if let url = URL(string: urlString) {
-            
+        // 1. Create URL ?Make sure URL no typo
+        if let url = URL(string: urlString){
+            // 2. Create URL Session
             let session = URLSession(configuration: .default)
+            // 3. Create URL Session DataTask
             let task = session.dataTask(with: url) { (data, response, error) in
+                // If fail to retrieve data from url
                 if error != nil {
                     self.delegate?.didFailWithError(error: error!)
-                    return
                 }
-                
+                // ?Make sure data successfully retrieve from url
                 if let safeData = data {
-                    if let bitcoinPrice = self.parseJSON(safeData) {
-                        let priceString = String(format: "%.2f", bitcoinPrice)
-                        self.delegate?.didUpdatePrice(price: priceString, currency: currency)
+                    // ?Make sure data successfully decoded
+                    if let coinArray = self.parseJSON(safeData) {
+                        // Get rank, symbol, price arrays
+                        //self.delegate?.didUpdatePrice(coinArray)
+                        // Pass symbol array
+                        self.delegate?.didUpdateList(coinArray.symbolArray)
                     }
                 }
             }
+            // 4. Perform Request
             task.resume()
         }
     }
     
-    func parseJSON(_ data: Data) -> Double? {
-        
+    // Fetch Coin Price
+    func getCoinPrice(_ row: Int) {
+        // Complete URL
+        let urlString = "\(baseURL)\(rankTo)&apikey=\(apiKey)"
+        // 1. Create URL ?Make sure URL no typo
+        if let url = URL(string: urlString){
+            // 2. Create URL Session
+            let session = URLSession(configuration: .default)
+            // 3. Create URL Session DataTask
+            let task = session.dataTask(with: url) { (data, response, error) in
+                // If fail to retrieve data from url
+                if error != nil {
+                    self.delegate?.didFailWithError(error: error!)
+                }
+                // ?Make sure data successfully retrieve from url
+                if let safeData = data {
+                    // ?Make sure data successfully decoded
+                    if let coinArray = self.parseJSON(safeData) {
+                        // Get rank, symbol, price arrays
+                        //self.delegate?.didUpdatePrice(coinArray)
+                        // Pass symbol array
+                        let priceArray = priceFormatting(coinArray.priceArray[row])
+                        self.delegate?.didUpdatePrice(priceArray, currency:  coinArray.symbolArray[row])
+            
+                    }
+                }
+            }
+            // 4. Perform Request
+            task.resume()
+        }
+    }
+    
+    // JSON Decode
+    func parseJSON(_ data: Data) -> CoinModel? {
+        // 1. Create Decoder
         let decoder = JSONDecoder()
         do {
+            // 2. Decode data (Set format of type for decoded data and where to get data)
             let decodedData = try decoder.decode(CoinData.self, from: data)
-            let lastPrice = decodedData.rate
-            print(lastPrice)
-            return lastPrice
             
+            // 3. Access decoded data
+            let ranks = decodedData.data.map { $0.rank }
+            let symbols = decodedData.data.map { $0.symbol }
+            let prices = decodedData.data.map { $0.priceUsd }
+            
+            // 4. Initialize Model and put in decoded data
+            let coinData = CoinModel(rankArray: ranks, symbolArray: symbols, priceArray: prices)
+            
+            return coinData
         } catch {
-            delegate?.didFailWithError(error: error)
+            // If fail to decode data, return nil
+            self.delegate?.didFailWithError(error: error)
             return nil
         }
     }
     
+    
+    // Price Formatting
+    func priceFormatting(_ priceString: String) -> String {
+        var price = "0"
+        if let priceDouble = Double(priceString) {
+            if priceDouble.truncatingRemainder(dividingBy: 1) == 0 || priceDouble >= 1000 {
+                price = String(format: "%.0f", priceDouble)
+            } else if priceDouble >= 100 {
+                price = String(format: "%.1f", priceDouble)
+            } else if priceDouble >= 10 {
+                price = String(format: "%.2f", priceDouble)
+            } else if priceDouble > 1 {
+                price = String(format: "%.3f", priceDouble)
+            } else {
+                if let decimalIndex = priceString.firstIndex(where: { $0 != "0" && $0 != "." }) {
+                    var nonZeroIndex = priceString.distance(from: priceString.startIndex, to: decimalIndex)
+                    nonZeroIndex = nonZeroIndex + 2
+                    price = String(format: "%.\(nonZeroIndex)f", priceDouble)
+                }
+            }
+        }
+        return price
+    }
 }

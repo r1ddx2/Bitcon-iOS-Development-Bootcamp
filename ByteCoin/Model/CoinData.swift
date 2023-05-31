@@ -8,6 +8,15 @@
 
 import Foundation
 
-struct CoinData: Decodable {
-    let rate: Double
+// Create format for storing of decoded data
+struct CoinData: Codable {
+    // data[0].symbol
+    let data: [RankData]
 }
+
+struct RankData: Codable {
+    let rank: String
+    let symbol: String
+    let priceUsd: String
+}
+
