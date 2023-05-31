@@ -9,11 +9,9 @@
 <!-- PROJECT LOGO -->
 <div align="center">
   <a href="https://github.com/r1ddx2/Bitcon-iOS-Development-Bootcamp">
-    <img src="bitconLogo.png" alt="Logo" width="80" height="80">
+    <img src="bitconLogo.png" alt="Logo" width="100" height="100">
   </a>
-
 <h3 align="center">Bitcon</h3>
-
   <p align="center">
     A converter of Top 25 crypto currencies to US dollars real time
   </p>
@@ -41,8 +39,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 <div align="center" style="display: inline-block;">
-    <img src="bitconDemoLight.png" alt="Logo" width="80" height="80">
-    <img src="bitconDemoDark.png" alt="Logo" width="80" height="80">
+    <img src="bitconDemoLight.png" alt="ScreenLight" >
+    <img src="bitconDemoDark.png" alt="ScreenDark" >
 
 </div>
 
