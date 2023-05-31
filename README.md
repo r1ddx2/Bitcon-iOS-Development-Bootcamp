@@ -50,12 +50,11 @@
 
 ## Installation
 
-1. Get a free API Key at [https://coincap.io/api-key](https://coincap.io/api-key)
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/github_username/Bitcon-iOS-Development-Bootcamp.git
    ```
-
+2. Enjoy!
 
 <!-- CONTACT -->
 ## Contact
