@@ -9,7 +9,7 @@
 <!-- PROJECT LOGO -->
 <div align="center">
   <a href="https://github.com/r1ddx2/Bitcon-iOS-Development-Bootcamp">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    ![bitconLogo](https://github.com/r1ddx2/Bitcon-iOS-Development-Bootcamp/assets/120559485/2b890490-1fb2-4adc-8ff0-8c557f928f27)
   </a>
 
 <h3 align="center">Bitcon</h3>
@@ -40,7 +40,9 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
+  [Bitcon](https://github.com/r1ddx2/Bitcon-iOS-Development-Bootcamp) is a single view app that fetches top 25 crypto currencies according to their market cap, and converts their value into US dollars. 
+  This is a modified version of [ByteCoin App](https://github.com/appbrewery/ByteCoin-iOS13-Completed). The original app fetches real time rate of specific currencies. 
+  
 
 ### Built With
 
@@ -59,8 +61,9 @@
 <!-- CONTACT -->
 ## Contact
 
-Red Wang - [@r1ddx](https://twitter.com/r1ddx) - r1ddx09@gmail.com
+Red Wang 
+- Email : r1ddx09@gmail.com
+- Twitter: [@r1ddx](https://twitter.com/r1ddx) 
+- Project Link: [https://github.com/github_username/Bitcon-iOS-Development-Bootcamp](https://github.com/github_username/Bitcon-iOS-Development-Bootcamp)
 
-Project Link: [https://github.com/github_username/Bitcon-iOS-Development-Bootcamp](https://github.com/github_username/Bitcon-iOS-Development-Bootcamp)
-
-<p align="right">(<a href="#readme-top">>>> BACK TO TOP</a>)</p>
+<p align="left">(<a href="#readme-top">>>> BACK TO TOP</a>)</p>
