@@ -9,11 +9,9 @@
 <!-- PROJECT LOGO -->
 <div align="center">
   <a href="https://github.com/r1ddx2/Bitcon-iOS-Development-Bootcamp">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="bitconLogo.png" alt="Logo" width="100" height="100">
   </a>
-
 <h3 align="center">Bitcon</h3>
-
   <p align="center">
     A converter of Top 25 crypto currencies to US dollars real time
   </p>
@@ -30,8 +28,7 @@
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
-    </li>
-    <li><a href="#installation">Installation</a></li>
+    </li
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
@@ -40,27 +37,30 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+<div align="center" style="display: inline-block;">
+    <img src="bitconDemoLight.png" alt="ScreenLight" width="270" height="540">
+    <img src="bitconDemoDark.png" alt="ScreenDark" width="270" height="540" >
 
+</div>
+
+                                                              
+                                                                                                                  
+  </br>
+  
+  [Bitcon](https://github.com/r1ddx2/Bitcon-iOS-Development-Bootcamp) is a single view app that fetches the top 25 crypto currencies according to their market cap. It returns a scroll list of the top 25 crypto currencies and can convert the value of the chosen currency into US dollars. <br>
+  I am currently learning iOS developmetn and this is a simple practice on how to work with RESTful APIs. <br>
+  This is a modified version of [ByteCoin App](https://github.com/appbrewery/ByteCoin-iOS13-Completed). The original app fetches real time rate of specific currencies. 
+  
 
 ### Built With
 
 * [Swift](https://developer.apple.com/swift/)
 
 
-
-## Installation
-
-1. Clone the repo
-   ```sh
-   git clone https://github.com/github_username/Bitcon-iOS-Development-Bootcamp.git
-   ```
-2. Enjoy!
-
 <!-- CONTACT -->
 ## Contact
 
-Red Wang - [@r1ddx](https://twitter.com/r1ddx) - r1ddx09@gmail.com
+Red Wang 
+- Email : r1ddx09@gmail.com
+- Twitter: [@r1ddx](https://twitter.com/r1ddx) 
 
-Project Link: [https://github.com/github_username/Bitcon-iOS-Development-Bootcamp](https://github.com/github_username/Bitcon-iOS-Development-Bootcamp)
-
-<p align="right">(<a href="#readme-top">>>> BACK TO TOP</a>)</p>
