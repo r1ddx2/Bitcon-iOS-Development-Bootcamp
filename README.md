@@ -13,7 +13,7 @@
   </a>
 <h3 align="center">Bitcon</h3>
   <p align="center">
-    A converter of Top 25 crypto currencies to US dollars real time
+    A real time converter of Top 25 crypto currencies to US dollars 
   </p>
 </div>
 
