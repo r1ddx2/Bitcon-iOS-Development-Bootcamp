@@ -49,7 +49,7 @@
   
   [Bitcon](https://github.com/r1ddx2/Bitcon-iOS-Development-Bootcamp) is a single view app that fetches the top 25 crypto currencies according to their market cap. It returns a scroll list of the top 25 crypto currencies and can convert the value of the chosen currency into US dollars. <br>
   I am currently learning iOS developmetn and this is a simple practice on how to work with RESTful APIs. <br>
-  This is a modified version of [ByteCoin App](https://github.com/appbrewery/ByteCoin-iOS13-Completed). The original app fetches real time rate of specific currencies. 
+  This is a modified version of [ByteCoin App](https://github.com/appbrewery/ByteCoin-iOS13-Completed). The original app only fetches real time rate of specific currencies. 
   
 
 ### Built With
